@@ -24,9 +24,7 @@ async function run(){
         // add user
         app.post('/user', async(req,res) => {
             const user = req.body;
-            console.log(req.body);
             const result = await userCollection.insertOne(user);
-            console.log(result);
             res.json('post user description')
         })
         // get user
@@ -63,9 +61,7 @@ async function run(){
         // add product
         app.post('/product', async(req,res) => {
             const product = req.body;
-            console.log(req.body);
             const result = await productCollection.insertOne(product);
-            console.log(result);
             res.json('post user description')
         })
         // get product
@@ -84,7 +80,6 @@ async function run(){
         // order delete
         app.delete('/product/:id',async(req,res)=>{
             const id = req.params.id;
-            console.log('product delete id ',id)
             const query = { _id: ObjectId(id)}
             const result = await productCollection.deleteOne(query);
             res.json(result);
@@ -92,9 +87,7 @@ async function run(){
         // add user review
         app.post('/review', async(req,res) => {
             const review = req.body;
-            console.log(req.body);
             const result = await reviewCollection.insertOne(review);
-            console.log(result);
             res.json('post user review description')
         })
         // get user review
@@ -106,9 +99,7 @@ async function run(){
         // add order
         app.post('/order', async(req,res) => {
             const order = req.body;
-            console.log(req.body);
             const result = await orderCollection.insertOne(order);
-            console.log(result);
             res.json('post user description')
         })
         // get order
@@ -127,7 +118,6 @@ async function run(){
         // order delete
         app.delete('/order/:id',async(req,res)=>{
             const id = req.params.id;
-            console.log('order delete id ',id)
             const query = { _id: ObjectId(id)}
             const result = await orderCollection.deleteOne(query);
             res.json(result);
@@ -136,7 +126,6 @@ async function run(){
         app.put('/order/:id',async(req,res)=>{
             const id = req.params.id;
             const updateOrder = req.body;
-            console.log('order Stage Update id ',updateOrder)
             const options = {upsert:true};
             const find = { _id: ObjectId(id)}
             const updatedoc = {
